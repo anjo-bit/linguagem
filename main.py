@@ -8,7 +8,7 @@ Diciplina: Linguagem de progamação
 from tkinter import*
 from tkinter import messagebox
 import sys
-
+import banco
 
 root = Tk()
 
@@ -67,6 +67,23 @@ def click0 ():
         messagebox.showinfo('info', 'Cadastrado')
         bt1 = Button(root, text="Entra", width=20, bg='#9400d3', foreground= 'white', command=click1)
         bt1.place(x=225, y=350)
+    if ed1.get() != "":
+        Nom = ed1.get()
+        Cpf = ed2.get()
+        Num = ed3.get()
+        Cep = ed4.get()
+        Mail = ed5.get()
+        edquery="INSERT INTO tabe (Nnome, Ccpf, Nnumr, Ccep, Ssenha) VALUES ('"+Nom+"','"+Cpf+"','"+Num+"','"+Cep+"','"+Mail+"')"
+        banco.dml(edquery)
+        ed1.delete(0, END)
+        ed2.delete(0, END)
+        ed3.delete(0, END)
+        ed4.delete(0, END)
+        ed5.delete(0, END)
+
+        print('Dados Gravados')
+    else:
+        print('ERRO')
 def click1 ():
     jen = Tk()
     root.destroy()
